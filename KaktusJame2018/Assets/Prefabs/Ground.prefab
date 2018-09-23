@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4948928856342980}
   - component: {fileID: 212183038228084330}
   - component: {fileID: 61997519647579566}
+  - component: {fileID: 114342512921207354}
   - component: {fileID: 114983323440532730}
+  - component: {fileID: 114076685793026482}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -67,6 +69,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114076685793026482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293278975733190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af17a745d77e9d04d860c282aeb9bab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowColor: {r: 1, g: 0.019607844, b: 0.5294118, a: 1}
+  shadowDirection: 1
+  layerOrder: -2
+--- !u!114 &114342512921207354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293278975733190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930472e2e8d4f1f4694c9cf9471d6a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorColor1: {r: 0.6901961, g: 0.23921569, b: 0.9098039, a: 1}
+  editorColor2: {r: 0.23921569, g: 0.5647059, b: 0.9098039, a: 1}
+  useEditorColors: 1
+  switchFrequency: 1
 --- !u!114 &114983323440532730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,7 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af17a745d77e9d04d860c282aeb9bab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowColor: {r: 0.5154415, g: 0.9339623, b: 0.8695744, a: 1}
+  shadowColor: {r: 0.03529412, g: 1, b: 0.94509804, a: 1}
+  shadowDirection: -1
+  layerOrder: -1
 --- !u!212 &212183038228084330
 SpriteRenderer:
   m_ObjectHideFlags: 1

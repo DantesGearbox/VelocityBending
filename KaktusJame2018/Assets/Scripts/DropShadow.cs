@@ -5,8 +5,10 @@ using UnityEngine;
 public class DropShadow : MonoBehaviour {
 
 	public Color shadowColor;
+	[Range(-1.0f, 1.0f)] public float shadowDirection = 0.0f;
+	public float layerOrder = 0.0f;
 
-	private Vector2 offset = new Vector2(-2.0f, 0.5f);
+	private Vector2 offset = new Vector2(-1.5f, 1.5f);
 
 	private SpriteRenderer shadowCaster;
 	private SpriteRenderer shadow;
@@ -32,9 +34,9 @@ public class DropShadow : MonoBehaviour {
 		shadowTransform.localRotation = Quaternion.identity;
 		shadowTransform.localScale = Vector3.one;
 
-		casterBounds = casterTransform.GetComponent<BoxCollider2D>().bounds;
-		extentsX = casterBounds.extents.x;
-		extentsY = casterBounds.extents.y;
+		//casterBounds = casterTransform.GetComponent<BoxCollider2D>().bounds;
+		//extentsX = casterBounds.extents.x;
+		//extentsY = casterBounds.extents.y;
 		//Debug.Log("Extents X: " + extentsX + "Extents Y: " + extentsY);
 
 		shadowCaster = GetComponent<SpriteRenderer>();
@@ -43,15 +45,17 @@ public class DropShadow : MonoBehaviour {
 		shadow.sortingOrder = shadowCaster.sortingOrder - 1;
 		shadow.color = shadowColor;
 
-		shadowTransform.position = new Vector2(casterTransform.position.x + offset.x, casterTransform.position.y + offset.y);
-		shadow.sprite = shadowCaster.sprite;
+		//shadowTransform.position = new Vector2(casterTransform.position.x + offset.x, casterTransform.position.y + offset.y);
+		//shadow.sprite = shadowCaster.sprite;
 	}
 
 	// After update method
 	void FixedUpdate () {
 
-		//Vector2 diff = (casterTransform.position - playerTransform.position);
-		//diff = diff.normalized * 2;
+		Vector2 diff = (casterTransform.position - playerTransform.position);
+		diff = diff.normalized * 0.75f;
+
+		//diff += offset; 
 
 		//float maxDist = 2.0f;
 		//float minDist = -2.0f;
@@ -78,7 +82,7 @@ public class DropShadow : MonoBehaviour {
 		//shadowTransform.position = new Vector2(casterTransform.position.x + offset.x, casterTransform.position.y + offset.y);
 		//shadowTransform.position = new Vector2(casterTransform.position.x + xOffset, casterTransform.position.y + yOffset);
 		//shadowTransform.position = new Vector2(casterTransform.position.x + distX, casterTransform.position.y + distY);
-		//shadowTransform.position = new Vector2(casterTransform.position.x + diff.x, casterTransform.position.y + diff.y);
-		//shadow.sprite = shadowCaster.sprite;
+		shadowTransform.position = new Vector2(casterTransform.position.x + (diff.x * shadowDirection), casterTransform.position.y + (diff.y * shadowDirection));
+		shadow.sprite = shadowCaster.sprite;
 	}
 }

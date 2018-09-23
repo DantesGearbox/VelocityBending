@@ -50,6 +50,10 @@ public class FollowPlayer : MonoBehaviour {
 		float yOffset = maxOffset * Mathf.Pow(trauma, 2) * Random.Range(-1.0f, 1.0f);
 		trauma -= traumaRemoval * Time.deltaTime;
 
+		//Camera rotate effect
+		float value = Mathf.Cos(Time.time) * 2;
+		transform.localRotation = Quaternion.Euler(0, 0, value);
+
 		//Camera follow effect
 		notShakenCam = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z), followBy);
 
