@@ -17,8 +17,8 @@ public class ScaleWithVelocity : MonoBehaviour {
 	void FixedUpdate() {
 
 		//Going fast
-		float fastScaleX = 0.5f;
-		float fastScaleY = 2.0f;
+		float fastScaleX = 2.0f;
+		float fastScaleY = 0.5f;
 
 		//Going slow
 		float slowScaleX = 1.0f;
@@ -32,6 +32,10 @@ public class ScaleWithVelocity : MonoBehaviour {
 		//Debug.Log("ySpeedRatio: " + ySpeedRatio + "xSpeedRatio: " + xSpeedRatio + ", xLerp: " + xLerp + ", yLerp: " + yLerp);
 
 		transform.localScale = new Vector2(xLerp, yLerp);
+
+		Vector2 dir = new Vector2(rb.velocity.x, rb.velocity.y);
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 
 	public void SetMaxYSpeed(float speed) {
